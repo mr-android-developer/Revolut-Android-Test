@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="@string/rates_title"
+        android:textColor="@color/rate_title_text_color"
+        android:textSize="@dimen/rate_title_text_size"
+        android:layout_marginStart="@dimen/rate_title_margin_left"
+        android:paddingTop="@dimen/padding"
+        android:paddingBottom="@dimen/padding"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainCurrency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <ImageView
+            android:id="@+id/mainCurrencyIcon"
+            android:layout_width="@dimen/flag_size"
+            android:layout_height="@dimen/flag_size"
+            android:contentDescription="@null"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:src="@drawable/european_union"/>
+
+        <TextView
+            android:id="@+id/mainCurrencyCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/currency_code_text_color"
+            android:textSize="@dimen/currency_code_text_size"
+            android:layout_marginStart="@dimen/padding"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/mainCurrencyIcon"
+            tools:text="EUR"/>
+
+        <TextView
+            android:id="@+id/mainCurrencyName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/currency_name_text_color"
+            android:textSize="@dimen/currency_name_text_size"
+            android:layout_marginStart="@dimen/padding"
+            app:layout_constraintTop_toBottomOf="@+id/mainCurrencyCode"
+            app:layout_constraintLeft_toRightOf="@+id/mainCurrencyIcon"
+            tools:text="Euro"/>
+
+        <TextView
+            android:id="@+id/mainCurrencyValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/rate_hint"
+            android:textSize="@dimen/rate_text_size"
+            android:textStyle="bold"
+            android:textColor="@color/currency_code_text_color"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:text="1,12"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rates"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/mainCurrency"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:itemCount="33"
+        tools:listitem="@layout/rate_view" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
